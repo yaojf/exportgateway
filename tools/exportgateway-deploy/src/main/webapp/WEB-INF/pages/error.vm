@@ -1,0 +1,10 @@
+#set($layout="layout/layout_login.vm")
+
+<div class="container-fluid">
+    <div class="page-header">
+        <h1>出错了</h1>
+    </div>
+    <p class=""><font color="red">异常信息</font>:$!{errorMsg}<br/>
+        <font color="red">异常详情</font>:$!{detail}<br/>
+    </p>
+</div>

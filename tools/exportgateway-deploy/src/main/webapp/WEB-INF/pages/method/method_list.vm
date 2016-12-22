@@ -1,0 +1,102 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">method</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-9">
+        <form class="form-inline" method="get" action="/method/list">
+            <div class="form-group">
+                <label class="sr-only" for="name">name</label>
+                <input type="text" class="form-control" id="name" placeholder="name" name="name" value="$!name">
+            </div>
+            <div class="form-group">
+                <label for="system_id" class="sr-only">外部系统</label>
+                <select class="form-control" id="systemId" name="systemId">
+                    <option value="">请选择</option>
+                    #if($!externalSystemList.size()>0)
+                        #foreach($!externalSystem in $!externalSystemList)
+                            <option value="$!externalSystem.id" #if($!externalSystem.id==$!systemId) selected #end>$!externalSystem.zhName</option>
+                        #end
+                    #end
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="status">status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="0" #if($!status==0) selected #end>失效</option>
+                    <option value="1" #if($!status==1) selected #end>有效</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">查询</button>
+        </form>
+    </div>
+    <div class="col-sm-3">
+        <a href="/method/add" class="btn btn-primary pull-right" role="button">新增</a>
+    </div>
+</div>
+<hr/>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>系统名称</th>
+            <th>方法名称</th>
+            <th>URL</th>
+            <th>加签类型</th>
+            <th>状态</th>
+            <th>备注</th>
+            <th>调用类型</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>创建人</th>
+            <th>更新人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            #if($collectionUtils.isNotEmpty($methodList))
+                #foreach($method in $methodList)
+                <tr>
+                    <th>$!method.id</th>
+                    <td>
+                        $!view.module("systemModule").view("/module/system.vm").parameter("systemId",$!method.systemId)
+                    </td>
+                    <td>$!method.name</td>
+                    <td>$!method.url</td>
+                    <td>
+                        #if($!method.signType=='null')
+                            不需要加签
+                        #else
+                            $!method.signType
+                        #end
+                    </td>
+                    <td>
+                        $!view.module("statusModule").view("/module/status.vm").parameter("status",$!method.status)
+                    </td>
+                    <td>$!method.remark</td>
+                    <td>#if($!method.invokeType==1)
+                        通用
+                    #else 自定义
+                    #end</td>
+                    <td>$!dateUtils.format($!method.createTime)</td>
+                    <td>$!dateUtils.format($!method.updateTime)</td>
+                    <td>$!method.createPerson</td>
+                    <td>$!method.updatePerson</td>
+                    <td align="center">
+                        <a href="/method/update?id=$!method.id"><span class="glyphicon glyphicon-floppy-saved"
+                                                                      aria-hidden="true"></span></a>
+                        <a href="/method/delete?id=$!method.id" class="delete"><span
+                                class="glyphicon glyphicon-floppy-remove"
+                                aria-hidden="true"></span></a>
+                    </td>
+                </tr>
+                #end
+            #end
+        </tbody>
+    </table>
+</div>
+
+$!view.module("pageModule").view("/module/pagination.vm").parameter("page",$!page).parameter(
+    "url","/method/list?status=$!status&name=$!name&systemId=$!systemId")

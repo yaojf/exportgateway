@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/image/logo.jpg">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+    <link href="/static/css/common.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">出口网关后台配置</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+            ##                <li><a href="#">Dashboard</a></li>
+            ##                <li><a href="#">Settings</a></li>
+            ##                <li><a href="#">Profile</a></li>
+                <li>
+                    <a href="#"><span class="badge">$!thisUser.username</span></a>
+                </li>
+
+                <li><a href="/user/logout">Logout</a></li>
+            </ul>
+        ##            <form class="navbar-form navbar-right">
+        ##                <input type="text" class="form-control" placeholder="Search...">
+        ##            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-1 sidebar">
+            <ul class="nav nav-sidebar">
+                <li #if($!category=='/app/') class="active" #end><a href="/app/list">应用配置</a></li>
+                <li #if($!category=='/method/') class="active" #end><a href="/method/list">方法配置</a></li>
+                <li #if($!category=='/external-system/') class="active" #end><a href="/external-system/list">外部系统配置</a>
+                </li>
+                <li #if($!category=='/app-method/') class="active" #end><a href="/app-method/list">应用授权配置</a></li>
+            </ul>
+        ##            <ul class="nav nav-sidebar">
+        ##                <li><a href="">Nav item</a></li>
+        ##                <li><a href="">Nav item again</a></li>
+        ##                <li><a href="">One more nav</a></li>
+        ##                <li><a href="">Another nav item</a></li>
+        ##                <li><a href="">More navigation</a></li>
+        ##            </ul>
+        ##            <ul class="nav nav-sidebar">
+        ##                <li><a href="">Nav item again</a></li>
+        ##                <li><a href="">One more nav</a></li>
+        ##                <li><a href="">Another nav item</a></li>
+        ##            </ul>
+        </div>
+        <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
+            $!screen_content
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- 可选的Bootstrap主题文件（一般不使用） -->
+<script src="/static/bootstrap/css/bootstrap-theme.min.css"></script>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/static/bootstrap/js/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+##通用js存放位置
+<script src="/static/js/common.js"></script>
+
+</body>
+</html>
+
+#if($!jsName)
+<script src="$!jsName"></script>
+#end

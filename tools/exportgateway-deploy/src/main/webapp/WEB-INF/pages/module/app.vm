@@ -1,0 +1,5 @@
+#if($!key=='appId')
+    $!app.appId
+#elseif($!key=='appName')
+    $!app.appName
+#end

@@ -1,0 +1,11 @@
+#if($!key=='name')
+    $!method.name
+#elseif($!key=='invokeType')
+    #if($!method.invokeType==1)
+    通用
+    #else
+    自定义
+    #end
+#elseif($!key=='systemName')
+    $!externalSystem.zhName
+#end

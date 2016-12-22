@@ -1,0 +1,89 @@
+#set($jsName="/static/js/method/method_add.js")
+
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/method/list">method</a></li>
+    <li class="active">method-add</li>
+</ol>
+
+#if($!errorMsg)
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Error!</strong> $!errorMsg
+</div>
+#end
+
+<form class="form-horizontal" action="/method/save" method="post">
+    <div class="form-group sr-only">
+        <label for="id" class="col-sm-2 control-label">id</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="id" placeholder="id" name="id">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="system_id" class="col-sm-2 control-label">外部系统:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="system_id" name="system_id">
+                <option value="0">请选择</option>
+                #if($!externalSystemList.size()>0)
+                    #foreach($!externalSystem in $!externalSystemList)
+                        <option value="$!externalSystem.id">$!externalSystem.zhName</option>
+                    #end
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">方法名:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" placeholder="方法名" name="name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="url" class="col-sm-2 control-label">URL:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="url" placeholder="URL" name="url" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sign_type" class="col-sm-2 control-label">加签类型:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="sign_type" name="sign_type">
+                <option value="null">不需要</option>
+                <option value="md5">MD5</option>
+                <option value="rsa">RSA</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="status" class="col-sm-2 control-label">状态:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="status" name="status">
+                <option value="0">失效</option>
+                <option value="1" selected>有效</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="remark" class="col-sm-2 control-label">备注:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="remark" placeholder="备注" name="remark" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="invoke_type" class="col-sm-2 control-label">调用类型:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="invoke_type" name="invoke_type">
+                <option value="1">通用</option>
+                <option value="2">自定义</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-info" id="submit">提交</button>
+            <button type="reset" class="btn btn-default">重置</button>
+        </div>
+    </div>
+</form>

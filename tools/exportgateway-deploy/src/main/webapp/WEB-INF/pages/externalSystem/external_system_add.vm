@@ -1,0 +1,78 @@
+
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/external-system/list">external-system</a></li>
+    <li class="active">external-system-add</li>
+</ol>
+
+#if($!errorMsg)
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Error!</strong> $!errorMsg
+</div>
+#end
+
+<form class="form-horizontal" action="/external-system/save" method="post">
+    <div class="form-group sr-only">
+        <label for="id" class="col-sm-2 control-label">id</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="id" placeholder="id" name="id">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="en_name" class="col-sm-2 control-label">英文名称:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="en_name" placeholder="英文名称" name="en_name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="zh_name" class="col-sm-2 control-label">中文名称:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="zh_name" placeholder="中文名称" name="zh_name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="status" class="col-sm-2 control-label">状态:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="status" name="status">
+                <option value="0">失效</option>
+                <option value="1" selected>有效</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="rsa_private_key" class="col-sm-2 control-label">RSA私钥:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="rsa_private_key" placeholder="RSA私钥" name="rsa_private_key" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="rsa_public_key" class="col-sm-2 control-label">RSA公钥:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="rsa_public_key" placeholder="RSA公钥" name="rsa_public_key" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="md5_secret_key" class="col-sm-2 control-label">MD5私钥:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="md5_secret_key" placeholder="MD5私钥" name="md5_secret_key" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sign_back" class="col-sm-2 control-label">是否需要回签:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="sign_back" name="sign_back">
+                <option value="1">需要</option>
+                <option value="0">不需要</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-info" id="submit">提交</button>
+            <button type="reset" class="btn btn-default">重置</button>
+        </div>
+    </div>
+</form>

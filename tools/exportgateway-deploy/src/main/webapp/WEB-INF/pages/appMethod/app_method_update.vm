@@ -1,0 +1,66 @@
+#set($jsName="/static/js/appMethod/app_method_add.js")
+
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/app-method/list">app-method</a></li>
+    <li class="active">app-method-update</li>
+</ol>
+
+#if($!errorMsg)
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Error!</strong> $!errorMsg
+</div>
+#end
+
+<form class="form-horizontal" action="/app-method/save" method="post">
+    <div class="form-group">
+        <label for="id" class="col-sm-2 control-label">id</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="id" placeholder="id" name="id" value="$!appMethod.id" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="app_id" class="col-sm-2 control-label">应用:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="app_id" name="app_id">
+                <option value="0">请选择</option>
+                #if($!appList.size()>0)
+                    #foreach($!app in $!appList)
+                        <option value="$!app.id" #if($!appMethod.appId==$!app.id) selected
+                        #end>$!app.appName</option>
+                    #end
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="method_id" class="col-sm-2 control-label">方法:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="method_id" name="method_id">
+                <option value="0">请选择</option>
+                #if($!methodList.size()>0)
+                    #foreach($!method in $!methodList)
+                        <option value="$!method.id" #if($!appMethod.methodId==$!method.id) selected
+                        #end>$!method.name|$!method.systemId</option>
+                    #end
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="status" class="col-sm-2 control-label">状态:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="status" name="status">
+                <option value="0" #if($!appMethod.status==0) selected #end>失效</option>
+                <option value="1" #if($!appMethod.status==1) selected #end>有效</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-info" id="submit">提交</button>
+        </div>
+    </div>
+</form>

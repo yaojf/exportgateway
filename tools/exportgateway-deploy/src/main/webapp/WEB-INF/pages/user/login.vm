@@ -1,0 +1,24 @@
+#set($layout="layout/layout_login.vm")
+
+#if($!errorMsg)
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Error!</strong> $!errorMsg
+</div>
+#end
+
+<form class="form-signin" action="/user/login" method="post">
+    <h2 class="form-signin-heading">请登录</h2>
+    <label for="inputEmail" class="sr-only">userName</label>
+    <input type="userName" id="userName" class="form-control" placeholder="userName" name="userName" required autofocus="" value="$!{userName}">
+    <label for="password" class="sr-only">password</label>
+    <input type="password" id="password" class="form-control" placeholder="password" name="password" required value="$!{password}">
+##    <div class="checkbox">
+##        <label>
+##            <input type="checkbox" value="remember-me"> Remember me
+##        </label>
+##    </div>
+    <input type="hidden" name="service" value="$!{service}">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+</form>

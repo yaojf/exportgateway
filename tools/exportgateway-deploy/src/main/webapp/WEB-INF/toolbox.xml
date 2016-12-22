@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolbox>
+    <tool>
+        <key>dateUtils</key>
+        <scope>application</scope>
+        <class>com.qccr.exportgateway.common.utils.DateUtils</class>
+    </tool>
+    <tool>
+        <key>collectionUtils</key>
+        <scope>application</scope>
+        <class>com.qccr.exportgateway.common.utils.CollectionUtils</class>
+    </tool>
+</toolbox>

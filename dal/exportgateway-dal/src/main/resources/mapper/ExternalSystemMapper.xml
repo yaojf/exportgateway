@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qccr.exportgateway.dal.mapper.ExternalSystemMapper">
+    <resultMap id="BaseResultMap" type="com.qccr.exportgateway.dal.entity.ExternalSystem">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="en_name" property="enName" jdbcType="VARCHAR"/>
+        <result column="zh_name" property="zhName" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="rsa_private_key" property="rsaPrivateKey" jdbcType="VARCHAR"/>
+        <result column="rsa_public_key" property="rsaPublicKey" jdbcType="VARCHAR"/>
+        <result column="md5_secret_key" property="md5SecretKey" jdbcType="VARCHAR"/>
+        <result column="sign_back" property="signBack" jdbcType="BIT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="create_person" property="createPerson" jdbcType="VARCHAR"/>
+        <result column="update_person" property="updatePerson" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, en_name, zh_name, status, rsa_private_key, rsa_public_key, md5_secret_key, sign_back,
+    create_time, update_time, create_person, update_person
+  </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from external_system
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from external_system
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insertSelective" parameterType="com.qccr.exportgateway.dal.entity.ExternalSystem"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into external_system
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="enName != null">
+                en_name,
+            </if>
+            <if test="zhName != null">
+                zh_name,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="rsaPrivateKey != null">
+                rsa_private_key,
+            </if>
+            <if test="rsaPublicKey != null">
+                rsa_public_key,
+            </if>
+            <if test="md5SecretKey != null">
+                md5_secret_key,
+            </if>
+            <if test="signBack != null">
+                sign_back,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="createPerson != null">
+                create_person,
+            </if>
+            <if test="updatePerson != null">
+                update_person,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="enName != null">
+                #{enName,jdbcType=VARCHAR},
+            </if>
+            <if test="zhName != null">
+                #{zhName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="rsaPrivateKey != null">
+                #{rsaPrivateKey,jdbcType=VARCHAR},
+            </if>
+            <if test="rsaPublicKey != null">
+                #{rsaPublicKey,jdbcType=VARCHAR},
+            </if>
+            <if test="md5SecretKey != null">
+                #{md5SecretKey,jdbcType=VARCHAR},
+            </if>
+            <if test="signBack != null">
+                #{signBack,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createPerson != null">
+                #{createPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="updatePerson != null">
+                #{updatePerson,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from external_system
+    </select>
+
+    <select id="getExternalSystemList" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from external_system
+        where status = #{status,jdbcType=TINYINT}
+        <if test="enName != ''">
+            and en_name like CONCAT('%',#{enName,jdbcType=VARCHAR},'%')
+        </if>
+        <include refid="paginationSql"/>
+    </select>
+
+    <sql id="paginationSql">
+        <if test="page != null">
+            limit #{page.offset,jdbcType=INTEGER},#{page.limit,jdbcType=INTEGER}
+        </if>
+    </sql>
+
+    <select id="getExternalSystemListNum" resultType="java.lang.Integer" parameterType="map">
+        select count(*) from external_system where status = #{status,jdbcType=TINYINT}
+        <if test="enName != ''">
+            and en_name like CONCAT('%',#{enName,jdbcType=VARCHAR},'%')
+        </if>
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qccr.exportgateway.dal.entity.ExternalSystem">
+        update external_system
+        <set>
+            <if test="enName != null">
+                en_name = #{enName,jdbcType=VARCHAR},
+            </if>
+            <if test="zhName != null">
+                zh_name = #{zhName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="rsaPrivateKey != null">
+                rsa_private_key = #{rsaPrivateKey,jdbcType=VARCHAR},
+            </if>
+            <if test="rsaPublicKey != null">
+                rsa_public_key = #{rsaPublicKey,jdbcType=VARCHAR},
+            </if>
+            <if test="md5SecretKey != null">
+                md5_secret_key = #{md5SecretKey,jdbcType=VARCHAR},
+            </if>
+            <if test="signBack != null">
+                sign_back = #{signBack,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createPerson != null">
+                create_person = #{createPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="updatePerson != null">
+                update_person = #{updatePerson,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findByEnName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from external_system where en_name = #{enName,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

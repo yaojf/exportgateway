@@ -1,0 +1,100 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">app-method</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-9">
+        <form class="form-inline" method="get" action="/app-method/list">
+            <div class="form-group">
+                <label class="sr-only" for="appId">appId</label>
+                <select class="form-control" id="appId" name="appId">
+                    <option value="">请选择应用</option>
+                    #if($appList && $appList.size()>0)
+                        #foreach ($app in $appList)
+                            <option value="$!app.id" #if($!appId==$!app.id) selected #end>$!app.appName</option>
+                        #end
+                    #end
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="status">status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="0" #if($!status==0) selected #end>失效</option>
+                    <option value="1" #if($!status==1) selected #end>有效</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">查询</button>
+        </form>
+    </div>
+    <div class="col-sm-3">
+        <a href="/app-method/add" class="btn btn-primary pull-right" role="button">新增</a>
+    </div>
+</div>
+<hr/>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>应用ID</th>
+            <th>应用名称</th>
+            <th>系统名称</th>
+            <th>方法名称</th>
+            <th>调用类型</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>创建人</th>
+            <th>更新人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            #if($collectionUtils.isNotEmpty($appMethodList))
+                #foreach($appMethod in $appMethodList)
+                <tr>
+                    <th>$!appMethod.id</th>
+                    <td>
+                        $!view.module("appModule").view("/module/app.vm").parameter(
+                            "appId",$!appMethod.appId).parameter("key","appId")
+                    </td>
+                    <td>
+                        $!view.module("appModule").view("/module/app.vm").parameter(
+                            "appId",$!appMethod.appId).parameter("key","appName")
+                    </td>
+                    <td>
+                        $!view.module("methodModule").view("/module/method.vm").parameter(
+                            "methodId",$!appMethod.methodId).parameter("key","systemName")
+                    </td>
+                    <td>
+                        $!view.module("methodModule").view("/module/method.vm").parameter(
+                            "methodId",$!appMethod.methodId).parameter("key","name")
+                    </td>
+                    <td>
+                        $!view.module("methodModule").view("/module/method.vm").parameter(
+                            "methodId",$!appMethod.methodId).parameter("key","invokeType")
+                    </td>
+                    <td>
+                        $!view.module("statusModule").view("/module/status.vm").parameter("status",$!appMethod.status)
+                    </td>
+                    <td>$!dateUtils.format($!appMethod.createTime)</td>
+                    <td>$!dateUtils.format($!appMethod.updateTime)</td>
+                    <td>$!appMethod.createPerson</td>
+                    <td>$!appMethod.updatePerson</td>
+                    <td align="center">
+                        <a href="/app-method/update?id=$!appMethod.id"><span class="glyphicon glyphicon-floppy-saved"
+                                                                             aria-hidden="true"></span></a>
+                        <a href="/app-method/delete?id=$!appMethod.id" class="delete"><span
+                                class="glyphicon glyphicon-floppy-remove"
+                                aria-hidden="true"></span></a>
+                    </td>
+                </tr>
+                #end
+            #end
+        </tbody>
+    </table>
+</div>
+
+$!view.module("pageModule").view("/module/pagination.vm").parameter("page",$!page).parameter(
+    "url","/app-method/list?status=$!status")

@@ -1,0 +1,34 @@
+#set($Previous=$!page.getCurrentPage() - 1)
+
+#set($Next=$!page.getCurrentPage() + 1)
+
+#set($begin=$!page.getCurrentPage() - 2)
+
+#set($end=$!page.getCurrentPage() + 2)
+
+<nav>
+    <ul class="pagination pagination-lg pull-right">
+        <li #if($Previous<1) class="disabled" #end>
+            <a #if($Previous<1)
+                    onclick="javascript:return false;"
+            #end
+                    href="$!url&pageNum=$!{Previous}&pageSize=$!{page.getPageSize()}"
+                    aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        #foreach($index in [$begin..$end])
+            #if($index>0&&$index<=$!{page.getTotalPageNum()})
+                <li #if($!page.getCurrentPage()==$index) class="active" #end><a
+                        href="$!url&pageNum=$!{index}&pageSize=$!{page.getPageSize()}">$index</a></li>
+            #end
+        #end
+        <li #if($Next>$!{page.getTotalPageNum()}) class="disabled" #end>
+            <a #if($Next>$!{page.getTotalPageNum()})
+                    onclick="javascript:return false;"
+            #end href="$!url&pageNum=$!{Next}&pageSize=$!{page.getPageSize()}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

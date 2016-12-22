@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qccr.exportgateway.dal.mapper.MethodMapper">
+    <resultMap id="BaseResultMap" type="com.qccr.exportgateway.dal.entity.Method">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="system_id" property="systemId" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="sign_type" property="signType" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="invoke_type" property="invokeType" jdbcType="TINYINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="create_person" property="createPerson" jdbcType="VARCHAR"/>
+        <result column="update_person" property="updatePerson" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, system_id, name, url, sign_type, status, remark, invoke_type, create_time, update_time,
+    create_person, update_person
+  </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from method
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from method
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insertSelective" parameterType="com.qccr.exportgateway.dal.entity.Method" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into method
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="systemId != null">
+                system_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="signType != null">
+                sign_type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="invokeType != null">
+                invoke_type,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="createPerson != null">
+                create_person,
+            </if>
+            <if test="updatePerson != null">
+                update_person,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="systemId != null">
+                #{systemId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="signType != null">
+                #{signType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="invokeType != null">
+                #{invokeType,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createPerson != null">
+                #{createPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="updatePerson != null">
+                #{updatePerson,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from method
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qccr.exportgateway.dal.entity.Method">
+        update method
+        <set>
+            <if test="systemId != null">
+                system_id = #{systemId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="signType != null">
+                sign_type = #{signType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="invokeType != null">
+                invoke_type = #{invokeType,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createPerson != null">
+                create_person = #{createPerson,jdbcType=VARCHAR},
+            </if>
+            <if test="updatePerson != null">
+                update_person = #{updatePerson,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getMethodList" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from method
+        where status = #{status,jdbcType=TINYINT}
+        <if test="name != ''">
+            and name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="systemId != null">
+            and system_id = #{systemId,jdbcType=INTEGER}
+        </if>
+        <include refid="paginationSql"/>
+    </select>
+
+    <sql id="paginationSql">
+        <if test="page != null">
+            limit #{page.offset,jdbcType=INTEGER},#{page.limit,jdbcType=INTEGER}
+        </if>
+    </sql>
+
+    <select id="getMethodListNum" resultType="java.lang.Integer" parameterType="map">
+        select count(*) from method where status = #{status,jdbcType=TINYINT}
+        <if test="name != ''">
+            and name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="systemId != null">
+            and system_id = #{systemId,jdbcType=INTEGER}
+        </if>
+    </select>
+
+
+</mapper>

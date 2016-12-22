@@ -1,0 +1,85 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">external-system</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-9">
+        <form class="form-inline" method="get" action="/external-system/list">
+            <div class="form-group">
+                <label class="sr-only" for="enName">enName</label>
+                <input type="text" class="form-control" id="enName" placeholder="enName" value="$!enName" name="enName">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="status">status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="0" #if($!status==0) selected #end>失效</option>
+                    <option value="1" #if($!status==1) selected #end>有效</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">查询</button>
+        </form>
+    </div>
+    <div class="col-sm-3">
+        <a href="/external-system/add" class="btn btn-primary pull-right" role="button">新增</a>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>英文名称</th>
+                <th>中文名称</th>
+                <th>状态</th>
+                <th>RSA私钥</th>
+                <th>RSA公钥</th>
+                <th>MD5私钥</th>
+                <th>是否需要回签</th>
+                <th>创建时间</th>
+                <th>更新时间</th>
+                <th>创建人</th>
+                <th>更新人</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+                #if($collectionUtils.isNotEmpty($externalSystemList))
+                    #foreach($externalSystem in $externalSystemList)
+                    <tr>
+                        <th>$!externalSystem.id</th>
+                        <td>$!externalSystem.enName</td>
+                        <td>$!externalSystem.zhName</td>
+                        <td>
+                            $!view.module("statusModule").view("/module/status.vm").parameter(
+                                "status",$!externalSystem.status)
+                        </td>
+                        <td>$!externalSystem.rsaPrivateKey</td>
+                        <td>$!externalSystem.rsaPublicKey</td>
+                        <td>$!externalSystem.md5SecretKey</td>
+                        <td>#if($!externalSystem.signBack) 需要
+                        #else 不需要 #end</td>
+                        <td>$!dateUtils.format($!externalSystem.createTime)</td>
+                        <td>$!dateUtils.format($!externalSystem.updateTime)</td>
+                        <td>$!externalSystem.createPerson</td>
+                        <td>$!externalSystem.updatePerson</td>
+                        <td align="center">
+                            <a href="/external-system/update?id=$!externalSystem.id"><span
+                                    class="glyphicon glyphicon-floppy-saved"
+                                    aria-hidden="true"></span></a>
+                            <a href="/external-system/delete?id=$!externalSystem.id" class="delete"><span
+                                    class="glyphicon glyphicon-floppy-remove"
+                                    aria-hidden="true"></span></a>
+                        </td>
+                    </tr>
+                    #end
+                #end
+            </tbody>
+        </table>
+    </div>
+
+    $!view.module("pageModule").view("/module/pagination.vm").parameter("page",$!page).parameter(
+        "url","/external-system/list?status=$!status&enName=$!enName")
+</div>

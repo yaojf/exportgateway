@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+
+    <context:property-placeholder location="classpath:config.properties"/>
+
+    <!--扫描配置-->
+    <context:component-scan base-package="com.qccr.exportgateway.web.controller"/>
+
+    <context:component-scan base-package="com.qccr.exportgateway.web.model.module"/>
+
+    <bean id="applicationContext" class="com.qccr.exportgateway.common.utils.ApplicationUtils"/>
+
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="featuresToDisable">
+            <array>
+                <bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+                    <property name="staticField"
+                              value="com.fasterxml.jackson.databind.SerializationFeature.FAIL_ON_EMPTY_BEANS"/>
+                </bean>
+            </array>
+        </property>
+        <property name="objectMapper">
+            <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                <property name="serializationInclusion">
+                    <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--spring mvc-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="objectMapper"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <!--velocity配置-->
+    <bean id="velocityConfig"
+          class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/pages/"/>
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">utf-8</prop>
+                <prop key="output.encoding">utf-8</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="velocityLayoutViewResolver"
+          class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="layoutUrl" value="layout/layout.vm"/>
+        <property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
+        <property name="suffix" value=".vm"/>
+        <property name="contentType" value="text/html; charset=utf-8"></property>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="allowSessionOverride" value="true"/>
+        <property name="allowRequestOverride" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="requestContextAttribute" value="rc"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.velocity.VelocityLayoutView"/>
+        <property name="order" value="1"/>
+    </bean>
+
+
+    <!--bootstrap-->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!-- Enable AspectJ style of Spring AOP -->
+    <aop:aspectj-autoproxy/>
+
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.qccr.exportgateway.web.interceptor.LoginInterceptor">
+                <property name="cookieHelper">
+                    <description>cookie帮助类</description>
+                    <bean class="com.qccr.exportgateway.web.cookie.CookieHelper">
+                        <constructor-arg name="maxAge" value="${cookie.maxAge}"/>
+                        <constructor-arg name="domain" value="${cookie.domain}"/>
+                        <constructor-arg name="path" value="${cookie.path}"/>
+                        <constructor-arg name="name" value="${cookie.name}"/>
+                        <constructor-arg name="httpOnly" value="${cookie.httpOnly}"/>
+                    </bean>
+                </property>
+                <property name="userSessionContainer">
+                    <ref bean="userSessionContainer"/>
+                </property>
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.qccr.exportgateway.web.interceptor.UrlActiveInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.qccr.exportgateway.web.interceptor.WebContentInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--异常处理器-->
+    <bean class="com.qccr.exportgateway.web.exceptionhandler.ExceptionAdvice"/>
+
+    <!--用户会话容器-->
+    <bean id="userSessionContainer" class="com.qccr.exportgateway.web.session.UserSessionContainer"/>
+
+</beans>

@@ -1,0 +1,74 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">app</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-9">
+        <form class="form-inline" method="get" action="/app/list">
+            <div class="form-group">
+                <label class="sr-only" for="appName">appName</label>
+                <input type="text" class="form-control" id="appName" name="appName" placeholder="appName" value="$!appName">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="status">status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="0" #if($!status==0) selected #end>失效</option>
+                    <option value="1" #if($!status==1) selected #end>有效</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">查询</button>
+        </form>
+    </div>
+    <div class="col-sm-3">
+        <a href="/app/add" class="btn btn-primary pull-right" role="button">新增</a>
+    </div>
+</div>
+<hr/>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>应用ID</th>
+            <th>应用名称</th>
+            <th>token</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>创建人</th>
+            <th>更新人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            #if($collectionUtils.isNotEmpty($appList))
+                #foreach($app in $appList)
+                <tr>
+                    <th>$!app.id</th>
+                    <td>$!app.appId</td>
+                    <td>$!app.appName</td>
+                    <td>$!app.token</td>
+                    <td>
+                        $!view.module("statusModule").view("/module/status.vm").parameter("status",$!app.status)
+                    </td>
+                    <td>$!dateUtils.format($!app.createTime)</td>
+                    <td>$!dateUtils.format($!app.updateTime)</td>
+                    <td>$!app.createPerson</td>
+                    <td>$!app.updatePerson</td>
+                    <td align="center">
+                        <a href="/app/update?id=$!app.id"><span class="glyphicon glyphicon-floppy-saved"
+                                                                aria-hidden="true"></span></a>
+                        <a href="/app/delete?id=$!app.id" class="delete"><span
+                                class="glyphicon glyphicon-floppy-remove"
+                                aria-hidden="true"></span></a>
+                    </td>
+                </tr>
+                #end
+            #end
+        </tbody>
+    </table>
+</div>
+
+$!view.module("pageModule").view("/module/pagination.vm").parameter("page",$!page).parameter(
+    "url","/app/list?status=$!status&appName=$!appName")
