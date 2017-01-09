@@ -101,16 +101,21 @@
                 <version>1.1.41</version>
             </dependency>
 
-            <!--qccr-->
+            <!--httpclient-->
             <dependency>
-                <groupId>com.qccr.commons</groupId>
-                <artifactId>knife</artifactId>
-                <version>1.0.4.release</version>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.4.1</version>
             </dependency>
             <dependency>
-                <groupId>com.qccr.framework</groupId>
-                <artifactId>insight</artifactId>
-                <version>1.0.5</version>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>4.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>4.4.1</version>
             </dependency>
 
 
@@ -182,6 +187,13 @@
             </dependency>
 
 
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.5</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
@@ -192,8 +204,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>

@@ -7,7 +7,7 @@ package com.qccr.exportgateway.common.utils;
 import com.google.common.collect.Maps;
 import com.qccr.exportgateway.common.Configs;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;

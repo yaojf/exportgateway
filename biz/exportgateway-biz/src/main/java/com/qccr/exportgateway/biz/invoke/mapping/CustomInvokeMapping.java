@@ -9,7 +9,7 @@ import com.qccr.exportgateway.biz.invoke.request.InvokeExecutionChain;
 import com.qccr.exportgateway.biz.invoke.request.RpcInvokeRequest;
 import com.qccr.exportgateway.biz.invoke.response.RpcInvokeResponse;
 import com.qccr.exportgateway.facade.ogw.protocol.EGProtocol;
-import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.core.MethodIntrospector;
 import org.springframework.core.annotation.AnnotationUtils;

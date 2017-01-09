@@ -4,6 +4,7 @@
  */
 package com.qccr.exportgateway.biz.invoke.mapping;
 
+
 import org.apache.commons.lang3.StringUtils;
 
 /**

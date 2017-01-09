@@ -7,11 +7,9 @@ package com.qccr.exportgateway.biz.invoke.request;
 import com.qccr.exportgateway.biz.invoke.interceptor.InvokeInterceptor;
 import com.qccr.exportgateway.biz.invoke.response.ResponseContainer;
 import com.qccr.exportgateway.biz.invoke.response.RpcInvokeResponse;
-import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.ObjectUtils;
-import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.List;
 

@@ -15,7 +15,7 @@ import com.qccr.exportgateway.biz.invoke.response.ResponseContainer;
 import com.qccr.exportgateway.biz.invoke.response.ResponseResolverUtils;
 import com.qccr.exportgateway.biz.invoke.response.RpcInvokeResponse;
 import com.qccr.exportgateway.biz.invoke.response.StateCodes;
-import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -25,9 +25,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.HandlerAdapter;
-import org.springframework.web.servlet.HandlerExecutionChain;
-import org.springframework.web.servlet.HandlerMapping;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.qccr.exportgateway.common.utils;
 
-import com.qccr.commons.spring.config.SpringConfig;
 import com.qccr.exportgateway.common.Constants;
+import com.qccr.exportgateway.common.spring.SpringConfig;
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
