@@ -24,12 +24,12 @@
 
     <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
         <property name="featuresToDisable">
-            <array>
+            <list>
                 <bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
                     <property name="staticField"
                               value="com.fasterxml.jackson.databind.SerializationFeature.FAIL_ON_EMPTY_BEANS"/>
                 </bean>
-            </array>
+            </list>
         </property>
         <property name="objectMapper">
             <bean class="com.fasterxml.jackson.databind.ObjectMapper">
