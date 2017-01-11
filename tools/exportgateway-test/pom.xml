@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>com.qccr.exportgateway</groupId>
-            <artifactId>exportgateway-deploy</artifactId>
+            <artifactId>exportgateway-web</artifactId>
             <version>1.0.0</version>
         </dependency>
 
