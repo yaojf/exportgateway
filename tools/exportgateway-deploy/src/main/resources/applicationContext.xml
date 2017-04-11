@@ -14,7 +14,7 @@
     <context:component-scan base-package="com.qccr.exportgateway.dal.dao"/>
 
     <!--加载配置文件-->
-    <bean id="springPlaceHolderConfigurer" class="com.qccr.exportgateway.common.spring.SpringPlaceHolderConfigurer">
+    <bean id="springPlaceHolderConfigurer" class="com.yaojiafeng.exportgateway.common.spring.SpringPlaceHolderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath:config.properties</value>

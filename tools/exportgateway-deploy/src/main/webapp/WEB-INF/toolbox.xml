@@ -3,11 +3,11 @@
     <tool>
         <key>dateUtils</key>
         <scope>application</scope>
-        <class>com.qccr.exportgateway.common.utils.DateUtils</class>
+        <class>com.yaojiafeng.exportgateway.common.utils.DateUtils</class>
     </tool>
     <tool>
         <key>collectionUtils</key>
         <scope>application</scope>
-        <class>com.qccr.exportgateway.common.utils.CollectionUtils</class>
+        <class>com.yaojiafeng.exportgateway.common.utils.CollectionUtils</class>
     </tool>
 </toolbox>

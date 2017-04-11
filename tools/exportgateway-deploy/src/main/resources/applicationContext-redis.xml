@@ -35,7 +35,7 @@
     </bean>
 
 
-    <bean id="redisUtils" class="com.qccr.exportgateway.common.utils.RedisUtils">
+    <bean id="redisUtils" class="com.yaojiafeng.exportgateway.common.utils.RedisUtils">
         <property name="valueOperations" ref="valueOperations"/>
         <property name="redisTemplate" ref="redisTemplate"/>
     </bean>

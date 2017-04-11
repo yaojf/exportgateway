@@ -20,7 +20,7 @@
 
     <context:component-scan base-package="com.qccr.exportgateway.web.model.module"/>
 
-    <bean id="applicationContext" class="com.qccr.exportgateway.common.utils.ApplicationUtils"/>
+    <bean id="applicationContext" class="com.yaojiafeng.exportgateway.common.utils.ApplicationUtils"/>
 
     <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
         <property name="featuresToDisable">
@@ -93,10 +93,10 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.qccr.exportgateway.web.interceptor.LoginInterceptor">
+            <bean class="com.yaojiafeng.exportgateway.web.interceptor.LoginInterceptor">
                 <property name="cookieHelper">
                     <description>cookie帮助类</description>
-                    <bean class="com.qccr.exportgateway.web.cookie.CookieHelper">
+                    <bean class="com.yaojiafeng.exportgateway.web.cookie.CookieHelper">
                         <constructor-arg name="maxAge" value="${cookie.maxAge}"/>
                         <constructor-arg name="domain" value="${cookie.domain}"/>
                         <constructor-arg name="path" value="${cookie.path}"/>
@@ -111,18 +111,18 @@
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.qccr.exportgateway.web.interceptor.UrlActiveInterceptor"/>
+            <bean class="com.yaojiafeng.exportgateway.web.interceptor.UrlActiveInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.qccr.exportgateway.web.interceptor.WebContentInterceptor"/>
+            <bean class="com.yaojiafeng.exportgateway.web.interceptor.WebContentInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <!--异常处理器-->
-    <bean class="com.qccr.exportgateway.web.exceptionhandler.ExceptionAdvice"/>
+    <bean class="com.yaojiafeng.exportgateway.web.exceptionhandler.ExceptionAdvice"/>
 
     <!--用户会话容器-->
-    <bean id="userSessionContainer" class="com.qccr.exportgateway.web.session.UserSessionContainer"/>
+    <bean id="userSessionContainer" class="com.yaojiafeng.exportgateway.web.session.UserSessionContainer"/>
 
 </beans>

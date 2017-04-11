@@ -4,7 +4,7 @@
  */
 package com.qccr.exportgateway.dal.dao;
 
-import com.qccr.exportgateway.common.Page;
+import com.yaojiafeng.exportgateway.common.Page;
 import com.qccr.exportgateway.dal.entity.AppMethod;
 
 import java.util.List;

@@ -4,8 +4,8 @@
  */
 package com.qccr.exportgateway.dal.dao.impl;
 
-import com.qccr.exportgateway.common.Constants;
-import com.qccr.exportgateway.common.Page;
+import com.yaojiafeng.exportgateway.common.Constants;
+import com.yaojiafeng.exportgateway.common.Page;
 import com.qccr.exportgateway.dal.dao.ExternalSystemDao;
 import com.qccr.exportgateway.dal.entity.ExternalSystem;
 import com.qccr.exportgateway.dal.mapper.ExternalSystemMapper;
