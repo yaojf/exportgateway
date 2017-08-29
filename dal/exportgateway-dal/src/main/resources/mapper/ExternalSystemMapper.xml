@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qccr.exportgateway.dal.mapper.ExternalSystemMapper">
-    <resultMap id="BaseResultMap" type="com.qccr.exportgateway.dal.entity.ExternalSystem">
+<mapper namespace="com.yaojiafeng.exportgateway.dal.mapper.ExternalSystemMapper">
+    <resultMap id="BaseResultMap" type="com.yaojiafeng.exportgateway.dal.entity.ExternalSystem">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="en_name" property="enName" jdbcType="VARCHAR"/>
         <result column="zh_name" property="zhName" jdbcType="VARCHAR"/>
@@ -33,7 +33,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-    <insert id="insertSelective" parameterType="com.qccr.exportgateway.dal.entity.ExternalSystem"
+    <insert id="insertSelective" parameterType="com.yaojiafeng.exportgateway.dal.entity.ExternalSystem"
             useGeneratedKeys="true" keyProperty="id">
         insert into external_system
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -138,7 +138,7 @@
         </if>
     </select>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.qccr.exportgateway.dal.entity.ExternalSystem">
+    <update id="updateByPrimaryKeySelective" parameterType="com.yaojiafeng.exportgateway.dal.entity.ExternalSystem">
         update external_system
         <set>
             <if test="enName != null">

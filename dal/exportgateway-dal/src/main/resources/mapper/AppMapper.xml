@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qccr.exportgateway.dal.mapper.AppMapper">
-    <resultMap id="BaseResultMap" type="com.qccr.exportgateway.dal.entity.App">
+<mapper namespace="com.yaojiafeng.exportgateway.dal.mapper.AppMapper">
+    <resultMap id="BaseResultMap" type="com.yaojiafeng.exportgateway.dal.entity.App">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="app_id" property="appId" jdbcType="VARCHAR"/>
         <result column="app_name" property="appName" jdbcType="VARCHAR"/>
@@ -29,7 +29,7 @@
     where id = #{id,jdbcType=INTEGER}
     </delete>
 
-    <insert id="insertSelective" parameterType="com.qccr.exportgateway.dal.entity.App" useGeneratedKeys="true"
+    <insert id="insertSelective" parameterType="com.yaojiafeng.exportgateway.dal.entity.App" useGeneratedKeys="true"
             keyProperty="id">
         insert into app
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -111,7 +111,7 @@
     </select>
 
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.qccr.exportgateway.dal.entity.App">
+    <update id="updateByPrimaryKeySelective" parameterType="com.yaojiafeng.exportgateway.dal.entity.App">
         update app
         <set>
             <if test="appId != null">

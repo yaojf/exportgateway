@@ -2,8 +2,8 @@ package com.yaojiafeng.exportgateway.biz.service.impl;
 
 import com.yaojiafeng.exportgateway.biz.service.ExternalSystemService;
 import com.yaojiafeng.exportgateway.common.Page;
-import com.qccr.exportgateway.dal.dao.ExternalSystemDao;
-import com.qccr.exportgateway.dal.entity.ExternalSystem;
+import com.yaojiafeng.exportgateway.dal.dao.ExternalSystemDao;
+import com.yaojiafeng.exportgateway.dal.entity.ExternalSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

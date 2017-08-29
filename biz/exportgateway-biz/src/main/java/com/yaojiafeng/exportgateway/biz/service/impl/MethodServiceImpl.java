@@ -2,8 +2,8 @@ package com.yaojiafeng.exportgateway.biz.service.impl;
 
 import com.yaojiafeng.exportgateway.biz.service.MethodService;
 import com.yaojiafeng.exportgateway.common.Page;
-import com.qccr.exportgateway.dal.dao.MethodDao;
-import com.qccr.exportgateway.dal.entity.Method;
+import com.yaojiafeng.exportgateway.dal.dao.MethodDao;
+import com.yaojiafeng.exportgateway.dal.entity.Method;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

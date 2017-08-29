@@ -16,9 +16,9 @@
     <context:property-placeholder location="classpath:config.properties"/>
 
     <!--扫描配置-->
-    <context:component-scan base-package="com.qccr.exportgateway.web.controller"/>
+    <context:component-scan base-package="com.yaojiafeng.exportgateway.web.controller"/>
 
-    <context:component-scan base-package="com.qccr.exportgateway.web.model.module"/>
+    <context:component-scan base-package="com.yaojiafeng.exportgateway.web.model.module"/>
 
     <bean id="applicationContext" class="com.yaojiafeng.exportgateway.common.utils.ApplicationUtils"/>
 

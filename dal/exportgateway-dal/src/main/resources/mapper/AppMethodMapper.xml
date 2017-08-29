@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qccr.exportgateway.dal.mapper.AppMethodMapper" >
-  <resultMap id="BaseResultMap" type="com.qccr.exportgateway.dal.entity.AppMethod" >
+<mapper namespace="com.yaojiafeng.exportgateway.dal.mapper.AppMethodMapper" >
+  <resultMap id="BaseResultMap" type="com.yaojiafeng.exportgateway.dal.entity.AppMethod" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="app_id" property="appId" jdbcType="INTEGER" />
     <result column="method_id" property="methodId" jdbcType="INTEGER" />
@@ -28,7 +28,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insertSelective" parameterType="com.qccr.exportgateway.dal.entity.AppMethod" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" parameterType="com.yaojiafeng.exportgateway.dal.entity.AppMethod" useGeneratedKeys="true" keyProperty="id" >
     insert into app_method
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="appId != null" >
@@ -108,7 +108,7 @@
     </if>
   </select>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.qccr.exportgateway.dal.entity.AppMethod" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yaojiafeng.exportgateway.dal.entity.AppMethod" >
     update app_method
     <set >
       <if test="appId != null" >

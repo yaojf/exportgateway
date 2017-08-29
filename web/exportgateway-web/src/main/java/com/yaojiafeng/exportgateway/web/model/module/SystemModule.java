@@ -1,7 +1,7 @@
 package com.yaojiafeng.exportgateway.web.model.module;
 
 import com.yaojiafeng.exportgateway.biz.service.ExternalSystemService;
-import com.qccr.exportgateway.dal.entity.ExternalSystem;
+import com.yaojiafeng.exportgateway.dal.entity.ExternalSystem;
 import com.yaojiafeng.exportgateway.web.model.AbstractViewModule;
 import com.yaojiafeng.exportgateway.web.model.ViewModuleParameter;
 import org.apache.velocity.context.InternalContextAdapter;

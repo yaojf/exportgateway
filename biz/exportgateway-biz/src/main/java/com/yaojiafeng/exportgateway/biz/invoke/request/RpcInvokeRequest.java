@@ -1,9 +1,9 @@
 package com.yaojiafeng.exportgateway.biz.invoke.request;
 
-import com.qccr.exportgateway.dal.entity.App;
-import com.qccr.exportgateway.dal.entity.AppMethod;
-import com.qccr.exportgateway.dal.entity.ExternalSystem;
-import com.qccr.exportgateway.dal.entity.Method;
+import com.yaojiafeng.exportgateway.dal.entity.App;
+import com.yaojiafeng.exportgateway.dal.entity.AppMethod;
+import com.yaojiafeng.exportgateway.dal.entity.ExternalSystem;
+import com.yaojiafeng.exportgateway.dal.entity.Method;
 import com.yaojiafeng.exportgateway.facade.ogw.protocol.EGProtocol;
 
 /**

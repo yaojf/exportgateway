@@ -8,8 +8,8 @@ import com.yaojiafeng.exportgateway.biz.invoke.response.StateCodes;
 import com.yaojiafeng.exportgateway.common.Configs;
 import com.yaojiafeng.exportgateway.common.utils.HttpUtils;
 import com.yaojiafeng.exportgateway.common.utils.SignUtils;
-import com.qccr.exportgateway.dal.entity.ExternalSystem;
-import com.qccr.exportgateway.dal.entity.Method;
+import com.yaojiafeng.exportgateway.dal.entity.ExternalSystem;
+import com.yaojiafeng.exportgateway.dal.entity.Method;
 import com.yaojiafeng.exportgateway.facade.ogw.protocol.EGProtocol;
 import org.springframework.stereotype.Component;
 

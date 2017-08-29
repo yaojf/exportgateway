@@ -9,9 +9,9 @@
            http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!--biz-->
-    <context:component-scan base-package="com.qccr.exportgateway.biz.service"/>
+    <context:component-scan base-package="com.yaojiafeng.exportgateway.biz.service"/>
     <!--dal-->
-    <context:component-scan base-package="com.qccr.exportgateway.dal.dao"/>
+    <context:component-scan base-package="com.yaojiafeng.exportgateway.dal.dao"/>
 
     <!--加载配置文件-->
     <bean id="springPlaceHolderConfigurer" class="com.yaojiafeng.exportgateway.common.spring.SpringPlaceHolderConfigurer">
@@ -27,11 +27,11 @@
     <import resource="applicationContext-redis.xml"/>
 
     <!--rpc调用路由-->
-    <context:component-scan base-package="com.qccr.exportgateway.biz.invoke"/>
+    <context:component-scan base-package="com.yaojiafeng.exportgateway.biz.invoke"/>
 
     <task:annotation-driven/>
     <!--task-->
-    <context:component-scan base-package="com.qccr.exportgateway.web.task"/>
+    <context:component-scan base-package="com.yaojiafeng.exportgateway.web.task"/>
 
 
 </beans>

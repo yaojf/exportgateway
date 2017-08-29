@@ -2,13 +2,13 @@
  * qccr.com Inc.
  * Copyright (c) 2014-2016 All Rights Reserved.
  */
-package com.qccr.exportgateway.dal.dao.impl;
+package com.yaojiafeng.exportgateway.dal.dao.impl;
 
 import com.yaojiafeng.exportgateway.common.Constants;
 import com.yaojiafeng.exportgateway.common.Page;
-import com.qccr.exportgateway.dal.dao.ExternalSystemDao;
-import com.qccr.exportgateway.dal.entity.ExternalSystem;
-import com.qccr.exportgateway.dal.mapper.ExternalSystemMapper;
+import com.yaojiafeng.exportgateway.dal.dao.ExternalSystemDao;
+import com.yaojiafeng.exportgateway.dal.entity.ExternalSystem;
+import com.yaojiafeng.exportgateway.dal.mapper.ExternalSystemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

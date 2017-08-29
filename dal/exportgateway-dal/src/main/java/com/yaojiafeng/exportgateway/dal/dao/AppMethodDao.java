@@ -2,10 +2,10 @@
  * qccr.com Inc.
  * Copyright (c) 2014-2016 All Rights Reserved.
  */
-package com.qccr.exportgateway.dal.dao;
+package com.yaojiafeng.exportgateway.dal.dao;
 
 import com.yaojiafeng.exportgateway.common.Page;
-import com.qccr.exportgateway.dal.entity.AppMethod;
+import com.yaojiafeng.exportgateway.dal.entity.AppMethod;
 
 import java.util.List;
 

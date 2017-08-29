@@ -2,7 +2,7 @@ package com.yaojiafeng.exportgateway.web.controller;
 
 import com.yaojiafeng.exportgateway.biz.service.ExternalSystemService;
 import com.yaojiafeng.exportgateway.common.Page;
-import com.qccr.exportgateway.dal.entity.ExternalSystem;
+import com.yaojiafeng.exportgateway.dal.entity.ExternalSystem;
 import com.yaojiafeng.exportgateway.web.annotation.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

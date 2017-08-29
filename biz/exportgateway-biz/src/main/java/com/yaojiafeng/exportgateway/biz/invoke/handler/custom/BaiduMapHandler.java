@@ -24,7 +24,7 @@ public class BaiduMapHandler extends RootHandler{
 
     @Method("com.baidu.map.api.geocoder.v2")
     public String getLocation(RpcInvokeRequest request, RpcInvokeResponse response) {
-        com.qccr.exportgateway.dal.entity.Method method = request.getMethod();
+        com.yaojiafeng.exportgateway.dal.entity.Method method = request.getMethod();
         //获取url
         String url = method.getUrl();
 

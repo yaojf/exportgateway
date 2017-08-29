@@ -2,7 +2,7 @@
  * qccr.com Inc.
  * Copyright (c) 2014-2016 All Rights Reserved.
  */
-package com.qccr.exportgateway.dal.entity;
+package com.yaojiafeng.exportgateway.dal.entity;
 
 /**
  *

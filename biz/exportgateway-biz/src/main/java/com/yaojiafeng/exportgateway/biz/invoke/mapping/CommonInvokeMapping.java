@@ -3,7 +3,7 @@ package com.yaojiafeng.exportgateway.biz.invoke.mapping;
 import com.yaojiafeng.exportgateway.biz.invoke.handler.common.InvokeHandler;
 import com.yaojiafeng.exportgateway.biz.invoke.request.InvokeExecutionChain;
 import com.yaojiafeng.exportgateway.biz.invoke.request.RpcInvokeRequest;
-import com.qccr.exportgateway.dal.entity.Method;
+import com.yaojiafeng.exportgateway.dal.entity.Method;
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

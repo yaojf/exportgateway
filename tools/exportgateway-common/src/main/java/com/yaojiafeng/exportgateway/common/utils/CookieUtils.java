@@ -1,5 +1,7 @@
 package com.yaojiafeng.exportgateway.common.utils;
 
+import org.apache.commons.lang3.*;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -79,7 +81,9 @@ public class CookieUtils {
             value = "";
         }
         Cookie cookie = new Cookie(name, value);
-        cookie.setDomain(domain);
+        if (org.apache.commons.lang3.StringUtils.isNotBlank(domain)) {
+            cookie.setDomain(domain);
+        }
         cookie.setPath(path);
         if (maxAge != 0) {
             cookie.setMaxAge(maxAge);

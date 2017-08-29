@@ -1,7 +1,7 @@
-package com.qccr.exportgateway.dal.mapper;
+package com.yaojiafeng.exportgateway.dal.mapper;
 
 import com.yaojiafeng.exportgateway.common.Page;
-import com.qccr.exportgateway.dal.entity.AppMethod;
+import com.yaojiafeng.exportgateway.dal.entity.AppMethod;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

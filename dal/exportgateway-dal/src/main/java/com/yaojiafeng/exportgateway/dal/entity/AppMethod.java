@@ -1,24 +1,16 @@
-package com.qccr.exportgateway.dal.entity;
+package com.yaojiafeng.exportgateway.dal.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class ExternalSystem implements Serializable {
+public class AppMethod implements Serializable {
     private Integer id;
 
-    private String enName;
+    private Integer appId;
 
-    private String zhName;
+    private Integer methodId;
 
     private Byte status;
-
-    private String rsaPrivateKey;
-
-    private String rsaPublicKey;
-
-    private String md5SecretKey;
-
-    private Boolean signBack;
 
     private Date createTime;
 
@@ -38,20 +30,20 @@ public class ExternalSystem implements Serializable {
         this.id = id;
     }
 
-    public String getEnName() {
-        return enName;
+    public Integer getAppId() {
+        return appId;
     }
 
-    public void setEnName(String enName) {
-        this.enName = enName;
+    public void setAppId(Integer appId) {
+        this.appId = appId;
     }
 
-    public String getZhName() {
-        return zhName;
+    public Integer getMethodId() {
+        return methodId;
     }
 
-    public void setZhName(String zhName) {
-        this.zhName = zhName;
+    public void setMethodId(Integer methodId) {
+        this.methodId = methodId;
     }
 
     public Byte getStatus() {
@@ -60,38 +52,6 @@ public class ExternalSystem implements Serializable {
 
     public void setStatus(Byte status) {
         this.status = status;
-    }
-
-    public String getRsaPrivateKey() {
-        return rsaPrivateKey;
-    }
-
-    public void setRsaPrivateKey(String rsaPrivateKey) {
-        this.rsaPrivateKey = rsaPrivateKey;
-    }
-
-    public String getRsaPublicKey() {
-        return rsaPublicKey;
-    }
-
-    public void setRsaPublicKey(String rsaPublicKey) {
-        this.rsaPublicKey = rsaPublicKey;
-    }
-
-    public String getMd5SecretKey() {
-        return md5SecretKey;
-    }
-
-    public void setMd5SecretKey(String md5SecretKey) {
-        this.md5SecretKey = md5SecretKey;
-    }
-
-    public Boolean getSignBack() {
-        return signBack;
-    }
-
-    public void setSignBack(Boolean signBack) {
-        this.signBack = signBack;
     }
 
     public Date getCreateTime() {

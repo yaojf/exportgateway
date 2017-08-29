@@ -3,6 +3,7 @@ package com.yaojiafeng.exportgateway.web.controller;
 import com.yaojiafeng.exportgateway.biz.common.session.UserSession;
 import com.yaojiafeng.exportgateway.web.session.UserSessionContainer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,13 +38,19 @@ public class UserController extends RootController {
     }
 
 
+    @Value("${user.name:admin}")
+    private String userName;
+
+    @Value("${user.password:admin}")
+    private String userPassword;
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String userLoginPost(HttpServletRequest request,
                                 @RequestParam("userName") String userName,
                                 @RequestParam("password") String password,
                                 @RequestParam(value = "service", required = false) String service, ModelMap modelMap) {
 
-        if (userName.equals("admin") && password.equals("mama")) {
+        if (userName.equals(this.userName) && password.equals(this.userPassword)) {
             String sessionId = getUserSessionId(request);
             UserSession userSession = new UserSession();
             userSessionContainer.setUserBySessionId(sessionId, userSession);

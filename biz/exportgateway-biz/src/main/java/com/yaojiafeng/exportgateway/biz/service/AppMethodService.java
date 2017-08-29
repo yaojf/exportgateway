@@ -1,7 +1,7 @@
 package com.yaojiafeng.exportgateway.biz.service;
 
 import com.yaojiafeng.exportgateway.common.Page;
-import com.qccr.exportgateway.dal.entity.AppMethod;
+import com.yaojiafeng.exportgateway.dal.entity.AppMethod;
 
 import java.util.List;
 

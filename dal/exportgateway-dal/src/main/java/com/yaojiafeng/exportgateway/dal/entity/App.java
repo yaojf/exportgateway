@@ -1,4 +1,4 @@
-package com.qccr.exportgateway.dal.entity;
+package com.yaojiafeng.exportgateway.dal.entity;
 
 import java.io.Serializable;
 import java.util.Date;

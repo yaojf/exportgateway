@@ -120,7 +120,7 @@ public class CustomInvokeMapping extends AbstractInvokeMapping {
 
     @Override
     public InvokeExecutionChain getHandler(RpcInvokeRequest request) throws Exception {
-        com.qccr.exportgateway.dal.entity.Method method = request.getMethod();
+        com.yaojiafeng.exportgateway.dal.entity.Method method = request.getMethod();
         EGProtocol egProtocol = request.getEgProtocol();
         if (method.getInvokeType().equals(INVOKE_TYPE_CUSTOM)) {
             MethodInfo methodInfo = new MethodInfo(egProtocol.getMethod(), egProtocol.getExternalSystemName());
